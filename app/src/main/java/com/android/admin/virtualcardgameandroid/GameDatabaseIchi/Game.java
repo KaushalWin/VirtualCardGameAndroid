@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.TreeSet;
 
 /**
  * Created by Admin on 10/8/2017.
@@ -101,7 +104,7 @@ public class Game {
     public String getGname() {
         return gname;
     }
-    public Integer [] getDeck()
+    public TreeSet getDeck()
     {
         if(gname==null) return null;
         GetDeckPotClass gdc=new GetDeckPotClass("Deck");
@@ -114,7 +117,7 @@ public class Game {
 
         return  gdc.getDeck();
     }
-    public Integer [] getPot()
+    public TreeSet getPot()
     {
         if(gname==null) return null;
         GetDeckPotClass gpc=new GetDeckPotClass("Deck");
@@ -127,23 +130,128 @@ public class Game {
 
         return  gpc.getDeck();
     }
-    public Integer [] getPlayerCards()
+    public TreeSet getPlayerCards()
     {
         Player p=Player.CreatOrGetInstance();
         if(p.getPid()>0)
         {
             if(gname==null) return null;
-            GetDeckPotClass gpc=new GetDeckPotClass("Player"+p.getPid());
-            gpc.start();
-            try {
-                gpc.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return  gpc.getDeck();
+            return  getSpecificPlayerCard(p.getPid());
+
         }
         return null;
     }
+    private TreeSet getSpecificPlayerCard(int i)
+    {
+        if(!(i>0 && i<=6)) return null;
+        GetDeckPotClass gpc=new GetDeckPotClass("Player"+i);
+        gpc.start();
+        try {
+            gpc.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return  gpc.getDeck();
+    }
+    public boolean removeFromDeck(int playerno,int cardno)
+    {
+        TreeSet Deck=null;
+        if(playerno==0)
+        {
+            Deck=getDeck();
+        }
+        else if(playerno==-1)
+        {
+            Deck=getPot();
+        }
+        else if(playerno>0 && playerno<=6)
+        {
+            Deck=getSpecificPlayerCard(playerno);
+        }
+        if(Deck==null)return false;
+
+        //ArrayList al=new ArrayList()
+        boolean a=Deck.remove(cardno);
+        String kk=Deck.toString();
+        kk=kk.substring(1,kk.length()-1).replaceAll("\\s+","");;
+        if(a) {
+
+            setDeckPotClass sdpc;
+            if(playerno==0)
+            {
+                sdpc=new setDeckPotClass("Deck",kk);
+            }
+            else if(playerno==-1)
+            {
+                sdpc=new setDeckPotClass("Pot",kk);
+            }
+            else if(playerno>0 && playerno<=6)
+            {
+                sdpc=new setDeckPotClass("Player"+playerno,kk);
+            }
+            else{
+                return false;
+            }
+            sdpc.start();
+            try {
+                sdpc.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            a=sdpc.isUpdated();
+        }
+        return a;
+    }
+    public boolean insertInDeck(int playerno,int cardno)
+    {
+        TreeSet Deck=null;
+        if(playerno==0)
+        {
+            Deck=getDeck();
+        }
+        else if(playerno==-1)
+        {
+            Deck=getPot();
+        }
+        else if(playerno>0 && playerno<=6)
+        {
+            Deck=getSpecificPlayerCard(playerno);
+        }
+        if(Deck==null)return false;
+
+        //ArrayList al=new ArrayList()
+        boolean a=Deck.add(cardno);
+        String kk=Deck.toString();
+        kk=kk.substring(1,kk.length()-1).replaceAll("\\s+","");;
+        if(a) {
+
+            setDeckPotClass sdpc;
+            if(playerno==0)
+            {
+                sdpc=new setDeckPotClass("Deck",kk);
+            }
+            else if(playerno==-1)
+            {
+                sdpc=new setDeckPotClass("Pot",kk);
+            }
+            else if(playerno>0 && playerno<=6)
+            {
+                sdpc=new setDeckPotClass("Player"+playerno,kk);
+            }
+            else{
+                return false;
+            }
+            sdpc.start();
+            try {
+                sdpc.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            a=sdpc.isUpdated();
+        }
+        return a;
+    }
+
     private static class CreateClass extends Thread{
         boolean isGameOnline;
         Player p;
@@ -353,7 +461,7 @@ public class Game {
     }
 
     private static class GetDeckPotClass extends Thread{
-        Integer deck[];
+        TreeSet deck;
         Player p;
         Connection con;
         Statement s;
@@ -382,11 +490,11 @@ public class Game {
                 if(str==null)return;
                 Log.d("Debra1",type+"::"+str);
                 String strarr[]=str.split(",");
-                deck=new Integer[strarr.length];
+                deck=new TreeSet();
 
                 for(int i=0;i<strarr.length;i++)
                 {
-                    deck[i]=Integer.parseInt(strarr[i]);
+                    deck.add(Integer.parseInt(strarr[i]));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -397,8 +505,53 @@ public class Game {
 
         }
 
-        public Integer[] getDeck() {
+        public TreeSet getDeck() {
             return deck;
         }
+    }
+    private static class setDeckPotClass extends Thread{
+        Player p;
+        Connection con;
+        Statement s;
+        String type;
+        String Data;
+        boolean updated;
+
+        public setDeckPotClass(String type, String data) {
+            this.type = type;
+            Data = data;
+        }
+
+        public boolean isUpdated() {
+            return updated;
+        }
+
+        @Override
+        public void run() {
+            updated=false;
+            p=Player.CreatOrGetInstance();
+            con=p.getCon();
+            String name=Game.CreatOrGetInstance().getGname();
+            try {
+                s=con.createStatement();
+                int k=s.executeUpdate("update Card set "+type+"="+"'"+Data+"' where Name='"+name+"';");
+                //Log.d("Debra1","RS NULL?");
+                if(k==1)
+                {
+                    updated=true;
+                    return;
+                }
+
+                //Log.d("Debra1","RS present"+"Player"+p.getPid());
+
+            } catch (SQLException e) {
+                Log.d("Debra1",e.toString());
+            }
+
+
+
+
+        }
+
     }
 }
