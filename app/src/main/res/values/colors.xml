@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="MyMaroon">#590d17</color>
+    <color name="DarkMaroon">#2c060b</color>
+    <color name="DDMroon">#210307</color>
+    <color name="DDDMroon">#44191f</color>
 </resources>

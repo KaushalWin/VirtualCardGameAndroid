@@ -21,7 +21,6 @@ public class Login extends AppCompatActivity {
         Toast.makeText(this, ""+g.clearAll(), Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, "" + p.createUser("Hemant", "ya"), Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "" + p.ValidateUser("Khamar", "ya"), Toast.LENGTH_SHORT).show();
-
         Toast.makeText(this, "" + g.createGame("holo"), Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, "" + p.ValidateUser("Kaushal", "ya"), Toast.LENGTH_SHORT).show();
         // Toast.makeText(this, ""+g.lookGame().length, Toast.LENGTH_SHORT).show();
