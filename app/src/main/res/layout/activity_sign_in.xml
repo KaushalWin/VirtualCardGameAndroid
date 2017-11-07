@@ -5,38 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/back1"
     tools:context="com.android.admin.virtualcardgameandroid.SignInActivity"
-    android:background="@color/DDMroon"
     android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:orientation="horizontal">
-
-        <ImageView
-            android:layout_marginLeft="8dp"
-            android:id="@+id/imageView"
-            android:layout_width="35dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="138dp"
-            android:layout_weight="0.25"
-            app:srcCompat="@drawable/user" />
 
         <EditText
             android:layout_marginRight="8dp"
             android:layout_marginLeft="8dp"
             android:id="@+id/editText"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="138dp"
             android:layout_weight="1.48"
-            android:background="@drawable/edittext_rounded"
+            android:drawableLeft="@drawable/user"
+            android:backgroundTint="@color/MyYellow"
 
             android:ems="10"
-            android:hint="Email"
+            android:hint="Username"
             android:inputType="textPersonName"
             android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -47,56 +39,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginTop="8dp">
-
-        <ImageView
-            android:layout_marginLeft="8dp"
-            android:id="@+id/imageView3"
-            android:layout_width="35dp"
-            android:layout_height="34dp"
-
-            app:srcCompat="@drawable/lock"
-            android:layout_weight="0.25" />
 
         <EditText
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:id="@+id/editText2"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_alignStart="@+id/editText"
             android:layout_below="@+id/editText"
-
+            android:backgroundTint="@color/MyYellow"
             android:layout_weight="1.27"
-            android:background="@drawable/edittext_rounded"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
+            android:drawableLeft="@drawable/lock"
             android:textColorHint="@android:color/white" />
 
     </LinearLayout>
 
 
-        <Button
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:id="@+id/button"
-            android:layout_marginTop="35dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editText2"
-            android:layout_alignStart="@+id/editText2"
-            android:layout_below="@+id/editText2"
-            android:background="@android:color/white"
-            android:text="Login"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="bold" />
-
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_below="@+id/editText2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/edittext_rounded"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -104,7 +85,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Not a Member?SignUp"
+        android:text="Not a Player?SignUp"
         android:textColor="@android:color/white"
         android:gravity="center"/>
 

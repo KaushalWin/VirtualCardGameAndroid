@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/back1"
+    tools:context="com.android.admin.virtualcardgameandroid.CreateGameActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp">
+
+        <!--<TableRow-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" >-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/textView6"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Card Game"-->
+                <!--android:textColor="@android:color/white" />-->
+        <!--</TableRow>-->
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Number of Players"
+                android:textColorHint="@android:color/white"
+                android:backgroundTint="@color/MyYellow"
+                android:text=""
+                android:textColor="@android:color/white"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Number of Cards"
+                android:textColorHint="@android:color/white"
+                android:text=""
+                android:backgroundTint="@color/MyYellow"
+                android:textColor="@android:color/white"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+            <Switch
+                android:id="@+id/switch1"
+                android:textColor="@android:color/white"
+                android:thumbTint="@color/MyYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Put cards on table" />
+
+        </TableRow>
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+            <Switch
+                android:id="@+id/switch2"
+                android:textColor="@android:color/white"
+                android:thumbTint="@color/MyYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Take card from deck" />
+
+        </TableRow>
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:thumbTint="@color/MyYellow"
+                android:text="Pass card" />
+
+        </TableRow>
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+
+            <Switch
+                android:id="@+id/switch4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keep Card"
+                android:textColor="@android:color/white"
+                android:thumbTint="@color/MyYellow"
+                />
+
+        </TableRow>
+        <TableRow
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="40dp"
+                android:background="@drawable/edittext_rounded"
+                android:text="Create Game"
+                android:textColor="@android:color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </TableRow>
+
+
+    </TableLayout>
+</LinearLayout>

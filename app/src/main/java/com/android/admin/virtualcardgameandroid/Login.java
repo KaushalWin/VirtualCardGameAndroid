@@ -27,10 +27,10 @@ public class Login extends AppCompatActivity {
 //        Toast.makeText(this, ""+g.joinGame(g.lookGame()[0]), Toast.LENGTH_SHORT).show();
         Toast.makeText(this, ""+p.getPid(), Toast.LENGTH_SHORT).show();
         arr=g.getDeck();
-        Toast.makeText(this, "cards:"+arr, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "cards_login:"+arr, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, ""+g.removeFromDeck(0,3), Toast.LENGTH_SHORT).show();
         arr=g.getDeck();
-        Toast.makeText(this, "cards:"+arr, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "cards_login:"+arr, Toast.LENGTH_SHORT).show();
 //         Toast.makeText(this, ""+g.finish(), Toast.LENGTH_SHORT).show();
 
         // String str[]=g.lookGame();

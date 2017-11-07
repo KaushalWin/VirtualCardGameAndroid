@@ -7,4 +7,11 @@
     <color name="DarkMaroon">#2c060b</color>
     <color name="DDMroon">#210307</color>
     <color name="DDDMroon">#44191f</color>
+    <color name="MyPurple">#452c32</color>
+    <color name="MyBlue">#083272</color>
+    <color name="MyLightBlue">#0347a1</color>
+    <!--<color name="MyYellow">#cc9c16</color>-->
+    <color name="MyYellow">#e7b119</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
